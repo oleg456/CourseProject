@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CourseProject
 {
@@ -145,9 +146,59 @@ namespace CourseProject
             TextBoxTranslated.Text = translatedText;
         }
 
-        private void settings_Click(object sender, EventArgs e)
+        private void uploadFile_Click(object sender, EventArgs e)
         {
+            string latinString = null;
+            Stream openedFile = null;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
+            openFileDialog.Filter = "Text files (*.txt)|*.txt";
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    openedFile = openFileDialog.OpenFile();
+                    if (openedFile != null)
+                    {
+                        using (openedFile)
+                        {
+                            using (StreamReader reader = new StreamReader(openedFile))
+                            {
+                                latinString = reader.ReadToEnd();
+                                if (latinString.Length == 0)
+                                {
+                                    throw new InvalidOperationException();
+                                }
+                                TextBoxLatin.Text = latinString;
+                            }
+                        }
+                    }
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show(openFileDialog.FileName + " is empty", "=(", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Error occured during reading the file", "Oh, no!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
+            }
         }
+
+        private void about_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
     }
 }

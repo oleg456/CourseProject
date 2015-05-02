@@ -30,14 +30,12 @@
         {
             this.TopMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uploadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.about = new System.Windows.Forms.ToolStripMenuItem();
+            this.exit = new System.Windows.Forms.ToolStripMenuItem();
             this.TextBoxLatin = new System.Windows.Forms.TextBox();
             this.TextBoxTranslated = new System.Windows.Forms.TextBox();
             this.ButtonDoTranslation = new System.Windows.Forms.Button();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,34 +49,36 @@
             this.TopMenu.Size = new System.Drawing.Size(584, 24);
             this.TopMenu.TabIndex = 0;
             // 
-            // MenuItem1
+            // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uploadFileToolStripMenuItem,
-            this.aboutProjectToolStripMenuItem,
-            this.settingsToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "MenuItem1";
+            this.uploadFile,
+            this.about,
+            this.exit});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
             // 
-            // uploadFileToolStripMenuItem
+            // uploadFile
             // 
-            this.uploadFileToolStripMenuItem.Name = "uploadFileToolStripMenuItem";
-            this.uploadFileToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.uploadFileToolStripMenuItem.Text = "Upload File";
+            this.uploadFile.Name = "uploadFile";
+            this.uploadFile.Size = new System.Drawing.Size(152, 22);
+            this.uploadFile.Text = "Upload File";
+            this.uploadFile.Click += new System.EventHandler(this.uploadFile_Click);
             // 
-            // aboutProjectToolStripMenuItem
+            // about
             // 
-            this.aboutProjectToolStripMenuItem.Name = "aboutProjectToolStripMenuItem";
-            this.aboutProjectToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.aboutProjectToolStripMenuItem.Text = "About project";
+            this.about.Name = "about";
+            this.about.Size = new System.Drawing.Size(152, 22);
+            this.about.Text = "About project";
+            this.about.Click += new System.EventHandler(this.about_Click);
             // 
-            // exitToolStripMenuItem
+            // exit
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(152, 22);
+            this.exit.Text = "Exit";
+            this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // TextBoxLatin
             // 
@@ -107,29 +107,17 @@
             this.ButtonDoTranslation.UseVisualStyleBackColor = true;
             this.ButtonDoTranslation.Click += new System.EventHandler(this.ButtonDoTranslation_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(32, 19);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += settings_Click;
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(584, 261);
+            this.ClientSize = new System.Drawing.Size(584, 221);
             this.Controls.Add(this.ButtonDoTranslation);
             this.Controls.Add(this.TextBoxTranslated);
             this.Controls.Add(this.TextBoxLatin);
             this.Controls.Add(this.TopMenu);
             this.MainMenuStrip = this.TopMenu;
-            this.MaximumSize = new System.Drawing.Size(600, 300);
-            this.MinimumSize = new System.Drawing.Size(600, 300);
+            this.MaximumSize = new System.Drawing.Size(600, 260);
+            this.MinimumSize = new System.Drawing.Size(600, 260);
             this.Name = "MainForm";
             this.Text = "Translator";
             this.TopMenu.ResumeLayout(false);
@@ -143,14 +131,12 @@
 
         private System.Windows.Forms.MenuStrip TopMenu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem uploadFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutProjectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uploadFile;
+        private System.Windows.Forms.ToolStripMenuItem about;
+        private System.Windows.Forms.ToolStripMenuItem exit;
         private System.Windows.Forms.TextBox TextBoxLatin;
         private System.Windows.Forms.TextBox TextBoxTranslated;
         private System.Windows.Forms.Button ButtonDoTranslation;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
 
