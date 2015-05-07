@@ -76,6 +76,11 @@ namespace CourseProject
             's',
         };
 
+        List<char> FourSymbolsTranslation = new List<char>()
+        {
+            's',
+        };
+
         public MainForm()
         {
             InitializeComponent();
@@ -91,8 +96,15 @@ namespace CourseProject
                 string character = latinText[i].ToString().ToLower();
                 if (TranslationDictionary.ContainsKey(character))
                 {
-                    //explain on examples: artjom
-                    if (ThreeSymbolsTranslation.Contains(char.Parse(character)) && i + 2 <= latinText.Length
+                    if (ThreeSymbolsTranslation.Contains(char.Parse(character)) && i + 3 <= latinText.Length
+                        && !String.IsNullOrWhiteSpace(latinText[i + 1].ToString())
+                        && !String.IsNullOrWhiteSpace(latinText[i + 2].ToString())
+                        && !String.IsNullOrWhiteSpace(latinText[i + 3].ToString()))
+                    {
+                        character += latinText[i + 1].ToString() + latinText[i + 2].ToString() + latinText[i + 3].ToString();
+                        i += 3;
+                    }
+                    else if (ThreeSymbolsTranslation.Contains(char.Parse(character)) && i + 2 <= latinText.Length
                         && !String.IsNullOrWhiteSpace(latinText[i + 1].ToString())
                         && !String.IsNullOrWhiteSpace(latinText[i + 2].ToString()))
                     {
@@ -114,6 +126,20 @@ namespace CourseProject
                     }
                     else
                     {
+                        if (ThreeSymbolsTranslation.Contains(character[0]))
+                        {
+                            character = character.Substring(0, character.Length - 1);
+                            i -= 2;
+                            if (TranslationDictionary.ContainsKey(character))
+                            {
+                                translatedText += TranslationDictionary[character];
+                            }
+                            else
+                            {
+                                translatedText += TranslationDictionary[character[0].ToString()];
+                                i -= 2;
+                            }
+                        }
                         if (TwoSymbolsTranslation.Contains(character[0]))
                         {
                             //on example chasha
@@ -173,6 +199,21 @@ namespace CourseProject
                                 }
                                 TextBoxLatin.Text = latinString;
                             }
+
+                            //StreamReader reader = new StreamReader(openedFile);
+                            //try
+                            //{
+                            //    latinString = reader.ReadToEnd();
+                            //    if (latinString.Length == 0)
+                            //    {
+                            //        throw new InvalidOperationException();
+                            //    }
+                            //    TextBoxLatin.Text = latinString;
+                            //}
+                            //finally
+                            //{
+                            //    reader.Close();
+                            //}
                         }
                     }
                 }
@@ -197,8 +238,6 @@ namespace CourseProject
         {
             this.Close();
         }
-
-
 
     }
 }
